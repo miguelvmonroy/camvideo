@@ -1,0 +1,161 @@
+#N canvas 959 17 328 664 10;
+#X obj -27 15 cnv 15 100 60 empty empty empty 20 12 0 14 -195568 -66577
+0;
+#N canvas 1980 206 450 300 gemwin 0;
+#X obj 142 237 gemwin;
+#X obj 67 89 outlet;
+#X obj 67 10 inlet;
+#X msg 67 70 set destroy;
+#X msg 132 112 create \, 1;
+#X msg 198 112 destroy;
+#X msg 156 71 set create;
+#X obj 67 41 route create;
+#X msg 283 186 dimen 850 600;
+#X connect 2 0 7 0;
+#X connect 3 0 1 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 3 0;
+#X connect 7 0 4 0;
+#X connect 7 1 6 0;
+#X connect 7 1 5 0;
+#X connect 8 0 0 0;
+#X restore -22 54 pd gemwin;
+#X msg -22 32 destroy;
+#X text -26 11 Create window:;
+#X obj -55 122 cnv 15 300 150 empty empty configuracion 20 12 0 14
+-233017 -66577 0;
+#N canvas 1693 27 450 561 video 1;
+#X obj -13 25 cnv 15 280 500 empty empty empty 20 12 0 14 -228992 -66577
+0;
+#X obj -9 64 cnv 15 230 280 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X obj -5 480 pix_texture;
+#X obj -5 31 gemhead;
+#X msg 63 239 enumerate;
+#X msg 69 261 dialog;
+#X msg 32 131 colorspace RGBA;
+#X msg 37 189 device 0;
+#X msg 70 290 driver dv;
+#X obj 46 437 t a a;
+#X obj 46 458 print info;
+#X obj 14 354 t a a;
+#N canvas 166 121 570 420 device 0;
+#X obj 204 60 cnv 20 20 20 empty \$0-open-canvas 0 4 10 0 16 -233017
+-1 0;
+#X obj 60 61 hradio 18 1 0 8 empty empty empty 0 -6 0 8 -225271 -1
+-1 0;
+#X obj 60 13 inlet;
+#X msg 160 254 label \$1;
+#X obj 160 232 makefilename %d;
+#X obj 60 108 int;
+#X obj 60 337 outlet;
+#X obj 160 277 send \$0-open-canvas;
+#X msg 130 170 device \$1;
+#X obj 60 130 t b f;
+#X obj 130 192 t a a;
+#X obj 130 298 list prepend set;
+#X obj 130 320 list trim;
+#X obj 160 211 route device;
+#X obj 130 116 loadbang;
+#X msg 130 138 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 7 0;
+#X connect 4 0 3 0;
+#X connect 5 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 6 0;
+#X connect 9 1 8 0;
+#X connect 10 0 11 0;
+#X connect 10 1 13 0;
+#X connect 11 0 12 0;
+#X connect 12 0 6 0;
+#X connect 13 0 4 0;
+#X connect 14 0 15 0;
+#X connect 15 0 8 0;
+#X coords 0 -1 1 1 165 20 1 60 60;
+#X restore 37 165 pd device;
+#X obj -9 391 cnv 15 80 30 empty empty empty 20 12 0 14 -24198 -66577
+0;
+#X obj -5 396 pix_video;
+#X obj 85 371 print videoctl;
+#X obj 75 324 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 93 323 driver \$1;
+#X text 114 264 (if available);
+#X obj 85 352 r \$0-ctl;
+#X msg 53 213 device /dev/fw1;
+#X obj 83 437 s \$0-info;
+#X obj -3 534 rectangle 5 4;
+#X floatatom 29 73 3 0 1 0 - - -;
+#X floatatom 58 73 3 0 1 0 - - -;
+#X floatatom 86 73 3 0 1 0 - - -;
+#X floatatom 115 73 3 0 1 0 - - -;
+#X obj 1 107 colorRGB 0 1 0;
+#X obj 29 50 r RGB1;
+#X obj 72 35 r RGB2;
+#X obj 119 42 r RGB3;
+#X obj 177 38 r RGB4;
+#X obj 156 121 r cam;
+#X connect 2 0 22 0;
+#X connect 3 0 27 0;
+#X connect 4 0 11 0;
+#X connect 5 0 11 0;
+#X connect 6 0 11 0;
+#X connect 7 0 11 0;
+#X connect 8 0 11 0;
+#X connect 9 0 10 0;
+#X connect 9 1 21 0;
+#X connect 11 0 14 0;
+#X connect 11 1 15 0;
+#X connect 12 0 7 0;
+#X connect 14 0 2 0;
+#X connect 14 1 9 0;
+#X connect 16 0 17 0;
+#X connect 17 0 11 0;
+#X connect 19 0 11 0;
+#X connect 20 0 11 0;
+#X connect 23 0 27 1;
+#X connect 24 0 27 2;
+#X connect 25 0 27 3;
+#X connect 26 0 27 4;
+#X connect 27 0 14 0;
+#X connect 28 0 23 0;
+#X connect 29 0 24 0;
+#X connect 30 0 25 0;
+#X connect 31 0 26 0;
+#X connect 32 0 12 0;
+#X restore -40 155 pd video;
+#X obj -53 281 cnv 15 300 140 empty empty color 20 12 0 14 -233017
+-66577 0;
+#X obj -39 389 s RGB1;
+#X obj 15 387 s RGB2;
+#X obj 73 386 s RGB3;
+#X obj 131 385 s RGB4;
+#X obj -38 302 vsl 30 70 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6900 1;
+#X obj 15 303 vsl 30 70 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6900 1;
+#X obj 74 301 vsl 30 70 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6900 1;
+#X obj 127 297 vsl 30 70 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj -48 437 cnv 15 300 120 empty empty color 20 12 0 14 -233017
+-66577 0;
+#X text -44 583 propiedad de Baja Aquafarms;
+#X obj 97 122 cnv 15 160 150 empty empty camara_web_$ 20 10 0 14 -261682
+-66577 0;
+#X obj 97 221 hradio 20 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 103 251 s cam;
+#X text 177 589 version 1;
+#X text -44 566 hecho por : Miguel Eduardo Venegas Monroy;
+#X connect 1 0 2 0;
+#X connect 2 0 1 0;
+#X connect 11 0 7 0;
+#X connect 12 0 8 0;
+#X connect 13 0 9 0;
+#X connect 14 0 10 0;
+#X connect 18 0 19 0;
